@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiceRoll } from '../models/dice-roll';
 
 @Component({
   selector: 'dr2-dice-roller',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiceRollerComponent implements OnInit {
 
+  diceRolls: DiceRoll[] = [];
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  createDiceRoll(diceInput: string) {
+    let diceRoll = new DiceRoll(diceInput);
+    diceRoll.calculateRoll();
+
+    this.diceRolls.unshift(diceRoll);
+  }
 }

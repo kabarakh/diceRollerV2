@@ -2,8 +2,8 @@ import { SingleDie } from './single-die';
 
 export class DiceRoll {
     dice: SingleDie[] = [];
-    average: number;
-    sum: number;
+    average = 0;
+    sum = 0;
     date: Date;
     input: string;
 
@@ -14,7 +14,40 @@ export class DiceRoll {
         const inputParts = this.prepareInputParts(input);
 
         inputParts.forEach(singlePart => {
-            this.dice.push(new SingleDie(singlePart));
+            if (!singlePart.match(/^(\+|-)$/)) {
+                this.dice.push(new SingleDie(singlePart));
+            }
+        });
+    }
+
+    public getInput(): string {
+        return this.input;
+    }
+
+    public getSum(): number {
+        return this.sum;
+    }
+
+    public getAverage(): number {
+        return this.average;
+    }
+
+    public getDate(): Date {
+        return this.date;
+    }
+
+    public getDice(): SingleDie[] {
+        return this.dice;
+    }
+
+    public calculateRoll(): void {
+        this.dice.forEach(die => {
+            die.calculateRoll();
+
+            if (die.getDelimiter() === '+') {
+                this.average += die.getAverage();
+                this.sum += die.getSum();
+            }
         });
     }
 
@@ -24,9 +57,6 @@ export class DiceRoll {
             .replace(/[^0-9wd+\-]/g, '')
             .replace(/(\+|-)/g, ' $1');
 
-        if (!input.match(/^-|\+/)) {
-            input = '+' + input;
-        }
         return input.split(' ');
     }
 }

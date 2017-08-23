@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'dr2-input-form',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-form.component.scss']
 })
 export class InputFormComponent implements OnInit {
+  @Output() onSubmitDiceInput = new EventEmitter<string>();
+
+  diceInput = '';
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submitDiceInput() {
+    this.onSubmitDiceInput.emit(this.diceInput);
   }
 
 }
