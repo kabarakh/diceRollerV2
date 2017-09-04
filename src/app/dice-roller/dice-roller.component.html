@@ -1,2 +1,5 @@
 <dr2-input-form (onSubmitDiceInput)="createDiceRoll($event)"></dr2-input-form>
+<div class="mt-2 mb-2 row">
+    <button class="btn btn-secondary" (click)="diceRolls = []">Reset table</button>
+</div>
 <dr2-output-table (onRerollClick)="createDiceRoll($event)" [diceRolls]="diceRolls"></dr2-output-table>

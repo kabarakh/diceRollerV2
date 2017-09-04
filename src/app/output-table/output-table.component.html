@@ -7,13 +7,13 @@
         <th>Average</th>
         <th></th>
     </tr>
-    <tr *ngFor="let diceRoll of diceRolls">
+    <tr *ngFor="let diceRoll of diceRolls" [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">
         <td>{{diceRoll.date | date: 'medium'}}</td>
         <td>{{diceRoll.input}}</td>
         <td>
             <span *ngFor="let singleDie of diceRoll.dice">{{singleDie.delimiter}}{{singleDie.sum}}</span></td>
         <td>{{diceRoll.sum}}</td>
         <td>{{diceRoll.average}}</td>
-        <td><button (click)="reroll(diceRoll.input)">Re-Roll</button></td>
+        <td><button class="btn btn-primary" (click)="reroll(diceRoll.input)">Re-Roll</button></td>
     </tr>
 </table>
