@@ -1,5 +1,5 @@
+import { DiceRollsService } from './../services/dice-rolls.service';
 import { Component, OnInit } from '@angular/core';
-import { DiceRoll } from '../models/dice-roll';
 
 @Component({
   selector: 'dr2-dice-roller',
@@ -8,17 +8,12 @@ import { DiceRoll } from '../models/dice-roll';
 })
 export class DiceRollerComponent implements OnInit {
 
-  diceRolls: DiceRoll[] = [];
-
-  constructor() { }
+  constructor(protected diceRollsService: DiceRollsService) {}
 
   ngOnInit() {
   }
 
-  createDiceRoll(diceInput: string) {
-    let diceRoll = new DiceRoll(diceInput);
-    diceRoll.calculateRoll();
-
-    this.diceRolls.unshift(diceRoll);
+  public clearDiceRolls() {
+    this.diceRollsService.clearDiceRolls();
   }
 }

@@ -1,3 +1,4 @@
+import { DiceRollsService } from './services/dice-rolls.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,9 @@ import { DiceRollerComponent } from './dice-roller/dice-roller.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    DiceRollsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

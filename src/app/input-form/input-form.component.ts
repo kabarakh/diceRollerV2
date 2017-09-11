@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { DiceRollsService } from './../services/dice-rolls.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dr2-input-form',
@@ -6,17 +7,14 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./input-form.component.scss']
 })
 export class InputFormComponent implements OnInit {
-  @Output() onSubmitDiceInput = new EventEmitter<string>();
-
   diceInput = '';
 
-  constructor() { }
+  constructor(protected diceRollsService: DiceRollsService) { }
 
   ngOnInit() {
   }
 
   submitDiceInput() {
-    this.onSubmitDiceInput.emit(this.diceInput);
+      this.diceRollsService.addDiceRoll(this.diceInput);
   }
-
 }

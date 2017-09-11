@@ -19,7 +19,7 @@
             <input class="btn btn-primary" type="submit" value="Submit" [disabled]="!diceForm.form.valid" />
         </div>
         <div class="col-6">
-            <button class="btn btn-secondary" (click)="diceInput = ''; diceInputField.reset()">Reset input</button>
+            <button class="btn btn-secondary" (click)="diceInputField.reset(); diceInput = '';">Reset input</button>
         </div>
     </div>
 </form>
