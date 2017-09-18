@@ -25,5 +25,4 @@ export class OutputTableComponent implements OnInit, OnDestroy {
   reroll(input: string) {
     this.diceRollsService.addDiceRoll(input);
   }
-
 }

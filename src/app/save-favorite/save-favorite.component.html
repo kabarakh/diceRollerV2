@@ -1,0 +1,19 @@
+<button (click)="openModal(input)" class="btn btn-secondary">Save as favorite</button>
+<div [ngClass]="{'save-modal': true, 'open': displayModal}">
+    <form class="row" (submit)="saveFavorite()">
+        <div class="col-12">
+            <label>Title of the favorite: <input type="text" name="input" [(ngModel)]="title" required /></label>
+        </div>
+
+        <dr2-favorite-list class="col-12" [favoriteList]="favoriteList" (addFavoriteListPart)="saveFavoriteList()"></dr2-favorite-list>
+
+        <div class="col-6">
+            <button (click)="closeModal()">Abort</button>
+        </div>
+
+        <div class="col-6">
+            <input type="submit" value="Save" />
+        </div>
+    </form>
+</div>
+<div class="backdrop" (click)="closeModal()"></div>

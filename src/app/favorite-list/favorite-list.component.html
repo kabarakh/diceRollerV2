@@ -1,0 +1,13 @@
+<ul *ngIf="favoriteList?.length; else elseBlock">
+    <li *ngFor="let favoriteListPart of favoriteList">{{favoriteListPart.title}} <span class="fa fa-trash" (click)="deleteFavorite(favoriteListPart)"></span>
+        <dr2-favorite-list *ngIf="favoriteListPart?.subFavoriteList" [favoriteList]="favoriteListPart.subFavoriteList" (addFavoriteListPart)="passFavoriteListToParent()"></dr2-favorite-list>
+    </li>
+    <li><input type="text" [(ngModel)]="newTitle" /><span class="fa fa-plus" (click)="addFavorite()"></span>
+    </li>
+</ul>
+<ng-template #elseBlock>
+    <ul>
+        <li><input type="text" [(ngModel)]="newTitle" /><span class="fa fa-plus" (click)="addFavorite()"></span>
+        </li>
+    </ul>
+</ng-template>
