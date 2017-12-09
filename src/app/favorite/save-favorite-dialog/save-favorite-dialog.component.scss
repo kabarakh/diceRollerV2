@@ -1,0 +1,36 @@
+.save-modal {
+    padding: 20px;
+    position: fixed;
+    opacity: 0;
+    top: 25%;
+    left: 15%;
+    right: 15%;
+    box-shadow: #707070 0 3px 5px;
+    transition: all .3s;
+    background: white;
+    transform: translateY(-20%);
+    visibility: hidden;
+    z-index: 20;
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.backdrop {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .3s;
+    background: white;
+    visibility: hidden;
+    z-index: 10;
+    .open~& {
+        visibility: visible;
+        opacity: .5;
+    }
+}

@@ -7,6 +7,7 @@
       <th scope="col">Sum</th>
       <th scope="col">Average</th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
     <tr *ngFor="let diceRoll of diceRolls">
       <td><span class="text-nowrap">{{diceRoll.date | date: 'medium'}}</span></td>
@@ -20,6 +21,10 @@
       <td>
         <button class="btn btn-primary" (click)="reroll(diceRoll.input)">Re-Roll</button>
       </td>
+      <td>
+        <dr2-save-favorite-dialog [input]="diceRoll.input"></dr2-save-favorite-dialog>
+      </td>
     </tr>
   </table>
 </div>
+
