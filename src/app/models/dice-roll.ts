@@ -47,6 +47,9 @@ export class DiceRoll {
             if (die.getDelimiter() === '+') {
                 this.average += die.getAverage();
                 this.sum += die.getSum();
+            } else if (die.getDelimiter() === '-') {
+                this.average -= die.getAverage();
+                this.sum -= die.getSum();
             }
         });
     }
