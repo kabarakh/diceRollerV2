@@ -1,5 +1,5 @@
-import { DiceRollsService } from './../services/dice-rolls.service';
-import { DiceRoll } from './../models/dice-roll';
+import { DiceRollsService } from '../services/dice-rolls.service';
+import { DiceRoll } from '../models/dice-roll';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -15,7 +15,9 @@ export class OutputTableComponent implements OnInit, OnDestroy {
   constructor(protected diceRollsService: DiceRollsService) { }
 
   ngOnInit() {
-    this.subject = this.diceRollsService.getDiceRolls().subscribe(diceRolls => this.diceRolls = diceRolls);
+    this.subject = this.diceRollsService.getDiceRolls().subscribe(diceRolls => {
+      this.diceRolls = diceRolls;
+    });
   }
 
   ngOnDestroy() {

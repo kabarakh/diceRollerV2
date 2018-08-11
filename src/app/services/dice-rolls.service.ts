@@ -1,16 +1,20 @@
-import { DiceRoll } from './../models/dice-roll';
+import { DiceRoll } from '../models/dice-roll';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-
+import { AbstractStorageService } from './abstractStorage.service';
 
 @Injectable()
-export class DiceRollsService {
+export class DiceRollsService extends AbstractStorageService {
 
   protected diceRollStorage: DiceRoll[] = [];
   protected diceRoll = new BehaviorSubject<DiceRoll[]>(this.diceRollStorage);
+  storageName = 'diceRolls';
+  storageType = 'local';
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   public addDiceRoll(input: string) {
     if (input !== '') {
@@ -18,16 +22,26 @@ export class DiceRollsService {
       diceRoll.calculateRoll();
 
       this.diceRollStorage.unshift(diceRoll);
+      this.storeData(this.diceRollStorage);
       this.diceRoll.next(this.diceRollStorage);
     }
   }
 
   public clearDiceRolls() {
     this.diceRollStorage = [];
+    this.clear();
     this.diceRoll.next(this.diceRollStorage);
   }
 
   public getDiceRolls() {
+    this.diceRollStorage = this.loadData();
+    if (this.diceRollStorage === null) {
+      this.diceRollStorage = [];
+      this.storeData(this.diceRollStorage) ;
+    }
+
+    this.diceRoll.next(this.diceRollStorage);
+
     return this.diceRoll.asObservable();
   }
 

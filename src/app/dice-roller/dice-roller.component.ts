@@ -1,4 +1,4 @@
-import { DiceRollsService } from './../services/dice-rolls.service';
+import { DiceRollsService } from '../services/dice-rolls.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
