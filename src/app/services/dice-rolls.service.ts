@@ -1,8 +1,7 @@
 import { DiceRoll } from '../models/dice-roll';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
 import { AbstractStorageService } from './abstractStorage.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DiceRollsService extends AbstractStorageService {
