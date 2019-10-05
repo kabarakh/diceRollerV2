@@ -21,4 +21,10 @@ export class SaveFavoriteDialogComponent implements OnInit {
     this.favoriteTitle = '';
   }
 
+  saveFavorite(): void {
+    console.log('I\m where I wanna be');
+    this.displayModal = false;
+    this.favoriteTitle = '';
+  }
+
 }

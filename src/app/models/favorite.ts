@@ -1,22 +1,9 @@
-import { FavoriteListPartInterface } from './favorite-list-part.interface';
+import { AbstractFavoriteListPart } from './abstract.favorite-list-part';
 
-export class Favorite implements FavoriteListPartInterface {
-    title: string;
+export class Favorite extends AbstractFavoriteListPart {
     input: string;
 
     type: 'favorite';
-
-    setTitle(title): void {
-        this.title = title;
-    }
-
-    getTitle(): string {
-        return this.title;
-    }
-
-    getType(): string {
-        return this.type;
-    }
 
     setInput(input): void {
         this.input = input;

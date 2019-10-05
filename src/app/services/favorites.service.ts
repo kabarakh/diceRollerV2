@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs';
+import { DiceRoll } from '../models/dice-roll';
+import {AbstractStorageService} from './abstractStorage.service';
 
 
 @Injectable()
-export class DiceRollsService {
+export class FavoritesService extends AbstractStorageService {
+  storageName = 'favorites_fav';
+  storageType = 'local';
 
   protected diceRollStorage: DiceRoll[] = [];
   protected diceRoll = new BehaviorSubject<DiceRoll[]>(this.diceRollStorage);
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   public addDiceRoll(input: string) {
     if (input !== '') {

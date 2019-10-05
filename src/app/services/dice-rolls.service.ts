@@ -8,7 +8,7 @@ export class DiceRollsService extends AbstractStorageService {
 
   protected diceRollStorage: DiceRoll[] = [];
   protected diceRoll = new BehaviorSubject<DiceRoll[]>(this.diceRollStorage);
-  storageName = 'diceRolls';
+  storageName = 'diceRolls_favs';
   storageType = 'local';
 
   constructor() {

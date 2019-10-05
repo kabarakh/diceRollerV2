@@ -1,24 +1,19 @@
-import { FavoriteListPartInterface } from './favorite-list-part.interface';
+import { AbstractFavoriteListPart } from './abstract.favorite-list-part';
 
-export class FavoriteCollection implements FavoriteListPartInterface {
-    title: string;
-    collection: FavoriteListPartInterface[];
+export class FavoriteCollection extends AbstractFavoriteListPart {
+    collection: AbstractFavoriteListPart[];
 
     type = 'favorite-collection';
 
-    getType(): string {
-        return this.type;
-    }
-
-    setCollection(collection: FavoriteListPartInterface[]): void {
+    setCollection(collection: AbstractFavoriteListPart[]): void {
         this.collection = collection;
     }
 
-    getCollection(): FavoriteListPartInterface[] {
+    getCollection(): AbstractFavoriteListPart[] {
         return this.collection;
     }
 
-    addToCollection(entry: FavoriteListPartInterface): void {
+    addToCollection(entry: AbstractFavoriteListPart): void {
         this.collection.push(entry);
     }
 }

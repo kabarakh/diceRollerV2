@@ -10,10 +10,11 @@ import { DiceRollerComponent } from './dice-roller/dice-roller.component';
 import { StatisticsTableComponent } from './statistics-table/statistics-table.component';
 import { ListComponent } from './favorite/list/list.component';
 import { SingleFavoriteComponent } from './favorite/single-favorite/single-favorite.component';
-import { EditButtonsComponent } from './favorite/edit-buttons/edit-buttons.component';
+import { EditButtonComponent } from './favorite/edit-button/edit-button.component';
 import { EditFavoriteComponent } from './favorite/edit-favorite/edit-favorite.component';
 import { FavoriteGroupComponent } from './favorite/favorite-group/favorite-group.component';
 import { SaveFavoriteDialogComponent } from './favorite/save-favorite-dialog/save-favorite-dialog.component';
+import {FavoritesService} from './services/favorites.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { SaveFavoriteDialogComponent } from './favorite/save-favorite-dialog/sav
     StatisticsTableComponent,
     ListComponent,
     SingleFavoriteComponent,
-    EditButtonsComponent,
+    EditButtonComponent,
     EditFavoriteComponent,
     FavoriteGroupComponent,
     SaveFavoriteDialogComponent
@@ -34,7 +35,8 @@ import { SaveFavoriteDialogComponent } from './favorite/save-favorite-dialog/sav
     FormsModule
   ],
   providers: [
-    DiceRollsService
+    DiceRollsService,
+    FavoritesService
   ],
   bootstrap: [AppComponent]
 })
