@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { OutputTableComponent } from './output-table/output-table.component';
 import { DiceRollerComponent } from './dice-roller/dice-roller.component';
+import { StatisticsTableComponent } from './statistics-table/statistics-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputFormComponent,
     OutputTableComponent,
-    DiceRollerComponent
+    DiceRollerComponent,
+    StatisticsTableComponent
   ],
   imports: [
     BrowserModule,
