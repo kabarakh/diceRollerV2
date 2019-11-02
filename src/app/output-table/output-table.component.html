@@ -1,19 +1,50 @@
-<table class="table" *ngIf="diceRolls.length">
+<button class="btn btn-outline-secondary" (click)="displayStatistics = !displayStatistics">Toggle statistics</button>
+
+<div *ngIf="displayStatistics">
+  <table class="table">
     <tr>
-        <th>Date</th>
-        <th>Input</th>
-        <th>Dice results</th>
-        <th>Sum</th>
-        <th>Average</th>
-        <th></th>
+      <th>Rolls total</th>
+      <td>{{numberOfDiceRolls.total}}</td>
     </tr>
-    <tr *ngFor="let diceRoll of diceRolls">
-        <td>{{diceRoll.date | date: 'medium'}}</td>
-        <td>{{diceRoll.input}}</td>
-        <td>
-            <span *ngFor="let singleDie of diceRoll.dice">{{singleDie.delimiter}}{{singleDie.sum}}</span></td>
-        <td [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">{{diceRoll.sum}}</td>
-        <td [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">{{diceRoll.average}}</td>
-        <td><button class="btn btn-primary" (click)="reroll(diceRoll.input)">Re-Roll</button></td>
+    <tr>
+      <th>Rolls better than average</th>
+      <td class="good">{{numberOfDiceRolls.betterThanAverage}} ({{displayStatisticsPercentage(numberOfDiceRolls.betterThanAverage)}})</td>
     </tr>
+    <tr>
+      <th>Rolls equal to average</th>
+      <td class="average">{{numberOfDiceRolls.average}} ({{displayStatisticsPercentage(numberOfDiceRolls.average)}})</td>
+    </tr>
+    <tr>
+      <th>Rolls worse than average</th>
+      <td class="bad">{{numberOfDiceRolls.worseThanAverage}} ({{displayStatisticsPercentage(numberOfDiceRolls.worseThanAverage)}})</td>
+    </tr>
+    <tr>
+      <th>Sum of all rolls</th>
+      <td [ngClass]="{good: sumOfAllRolls > sumOfAllAverages, average: sumOfAllRolls === sumOfAllAverages, bad: sumOfAllRolls < sumOfAllAverages}">{{sumOfAllRolls}} (Sum of averages: {{sumOfAllAverages}})</td>
+    </tr>
+  </table>
+</div>
+
+<table class="table" *ngIf="diceRolls.length">
+  <tr>
+    <th>Date</th>
+    <th>Input</th>
+    <th>Dice results</th>
+    <th>Sum</th>
+    <th>Average</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let diceRoll of diceRolls">
+    <td>{{diceRoll.date | date: 'medium'}}</td>
+    <td>{{diceRoll.input}}</td>
+    <td>
+      <span *ngFor="let singleDie of diceRoll.dice">{{singleDie.delimiter}}{{singleDie.sum}}</span></td>
+    <td
+      [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">{{diceRoll.sum}}</td>
+    <td
+      [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">{{diceRoll.average}}</td>
+    <td>
+      <button class="btn btn-primary" (click)="reroll(diceRoll.input)">Re-Roll</button>
+    </td>
+  </tr>
 </table>
