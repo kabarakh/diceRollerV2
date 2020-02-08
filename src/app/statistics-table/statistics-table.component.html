@@ -1,26 +1,26 @@
-<button class="btn btn-outline-secondary" (click)="displayStatistics = !displayStatistics">Toggle statistics</button>
+<button class="btn btn-outline-secondary mb-2" (click)="displayStatistics = !displayStatistics">Toggle statistics</button>
 
-<div *ngIf="displayStatistics">
+<div *ngIf="displayStatistics" class="table-responsive mb-2">
   <table class="table">
     <tr>
-      <th>Rolls total</th>
+      <th scope="row">Rolls total</th>
       <td>{{numberOfDiceRolls.total}}</td>
     </tr>
     <tr>
       <th>Rolls better than average</th>
-      <td class="good">{{numberOfDiceRolls.betterThanAverage}} ({{displayStatisticsPercentage(numberOfDiceRolls.betterThanAverage)}})</td>
+      <td scope="row" class="table-success">{{numberOfDiceRolls.betterThanAverage}} ({{displayStatisticsPercentage(numberOfDiceRolls.betterThanAverage)}})</td>
     </tr>
     <tr>
-      <th>Rolls equal to average</th>
-      <td class="average">{{numberOfDiceRolls.average}} ({{displayStatisticsPercentage(numberOfDiceRolls.average)}})</td>
+      <th scope="row">Rolls equal to average</th>
+      <td class="table-warning">{{numberOfDiceRolls.average}} ({{displayStatisticsPercentage(numberOfDiceRolls.average)}})</td>
     </tr>
     <tr>
-      <th>Rolls worse than average</th>
-      <td class="bad">{{numberOfDiceRolls.worseThanAverage}} ({{displayStatisticsPercentage(numberOfDiceRolls.worseThanAverage)}})</td>
+      <th scope="row">Rolls worse than average</th>
+      <td class="table-danger">{{numberOfDiceRolls.worseThanAverage}} ({{displayStatisticsPercentage(numberOfDiceRolls.worseThanAverage)}})</td>
     </tr>
     <tr>
-      <th>Sum of all rolls</th>
-      <td [ngClass]="{good: sumOfAllRolls > sumOfAllAverages, average: sumOfAllRolls === sumOfAllAverages, bad: sumOfAllRolls < sumOfAllAverages}">{{sumOfAllRolls}} (Sum of averages: {{sumOfAllAverages}})</td>
+      <th scope="row">Sum of all rolls</th>
+      <td [ngClass]="{'table-success': sumOfAllRolls > sumOfAllAverages, 'table-warning': sumOfAllRolls === sumOfAllAverages, 'table-danger': sumOfAllRolls < sumOfAllAverages}">{{sumOfAllRolls}} (Sum of averages: {{sumOfAllAverages}})</td>
     </tr>
   </table>
 </div>

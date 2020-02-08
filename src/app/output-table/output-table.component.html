@@ -1,23 +1,25 @@
-<table class="table" *ngIf="diceRolls.length">
-  <tr>
-    <th>Date</th>
-    <th>Input</th>
-    <th>Dice results</th>
-    <th>Sum</th>
-    <th>Average</th>
-    <th></th>
-  </tr>
-  <tr *ngFor="let diceRoll of diceRolls">
-    <td>{{diceRoll.date | date: 'medium'}}</td>
-    <td>{{diceRoll.input}}</td>
-    <td>
-      <span *ngFor="let singleDie of diceRoll.dice">{{singleDie.delimiter}}{{singleDie.sum}}</span></td>
-    <td
-      [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">{{diceRoll.sum}}</td>
-    <td
-      [ngClass]="{good: diceRoll.sum > diceRoll.average, average: diceRoll.sum == diceRoll.average, bad: diceRoll.sum < diceRoll.average}">{{diceRoll.average}}</td>
-    <td>
-      <button class="btn btn-primary" (click)="reroll(diceRoll.input)">Re-Roll</button>
-    </td>
-  </tr>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped" *ngIf="diceRolls.length">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Input</th>
+      <th scope="col">Dice results</th>
+      <th scope="col">Sum</th>
+      <th scope="col">Average</th>
+      <th scope="col"></th>
+    </tr>
+    <tr *ngFor="let diceRoll of diceRolls">
+      <td><span class="text-nowrap">{{diceRoll.date | date: 'medium'}}</span></td>
+      <td>{{diceRoll.input}}</td>
+      <td>
+        <span *ngFor="let singleDie of diceRoll.dice">{{singleDie.delimiter}}{{singleDie.sum}}</span></td>
+      <td
+        [ngClass]="{'table-success': diceRoll.sum > diceRoll.average, 'table-warning': diceRoll.sum == diceRoll.average, 'table-danger': diceRoll.sum < diceRoll.average}">{{diceRoll.sum}}</td>
+      <td
+        [ngClass]="{'table-success': diceRoll.sum > diceRoll.average, 'table-warning': diceRoll.sum == diceRoll.average, 'table-danger': diceRoll.sum < diceRoll.average}">{{diceRoll.average}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="reroll(diceRoll.input)">Re-Roll</button>
+      </td>
+    </tr>
+  </table>
+</div>
