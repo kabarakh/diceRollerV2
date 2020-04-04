@@ -14,6 +14,9 @@ export class DiceRollerComponent implements OnInit {
   }
 
   public clearDiceRolls() {
-    this.diceRollsService.clearDiceRolls();
+    const confirmation = confirm('Are you sure you want to reset the table and statistics? This cannot be undone!');
+    if (confirmation) {
+      this.diceRollsService.clearDiceRolls();
+    }
   }
 }
