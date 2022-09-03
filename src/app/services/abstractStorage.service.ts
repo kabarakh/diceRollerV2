@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {local, session} from 'store2';
+import store from 'store2';
 
 @Injectable()
 export abstract class AbstractStorageService {
@@ -18,9 +18,9 @@ export abstract class AbstractStorageService {
     }
 
     if (this.storageType === 'local') {
-        this.storage = local;
+        this.storage = store.local;
     } else if (this.storageName === 'session') {
-      this.storage = session;
+      this.storage = store.session;
     } else {
       throw new Error('storageType has to be "session" or "local", "' + this.storageType + '" given');
     }
